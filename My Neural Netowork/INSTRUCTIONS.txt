@@ -1,0 +1,110 @@
+Hi Professor.
+
+To Run the program type make and then ./Net.
+
+Note: There is a bug in the program that when the program asks or 1 or 2 for training or testin, if you put in something else it crashes.
+
+
+I have left my text file folders inside the Program. T
+he Grades_TEXT_FILES has all the textfiles related to the Grades testcase and the WDBC_TEXT_FILES has all the files related to that testcase.
+
+
+THE NBA DATASET
+The question I am predicting is whether an NBA team will win over 50% of their games in a season based on thier season averages for theeir NBA Advanced Stat Metrics.
+NBA Advanced Stat metrics are advanced stats determined by the NBA that measure an NBA Team's performance in an advanced way.
+I am targeting the output of Winning 50% of your games because it is usually a great indicator that a team is above average, had a good season and will make the playoffs.
+
+
+This is a dataset that I created on my own, taken from NBA Teams stats.
+To acquire the raw data, I went to https://www.nba.com/stats/teams/advanced?Season=2021-22 and copied all the data from the past 14 seasons (Not counting 22-23) into an excell sheet.
+
+From the raw data there were 19 catergories: 
+
+GP = Games Played
+W = Wins
+L = Losses
+MIN = Minutes Played
+OFFRTG = Offensive Rating
+DEFRTG = Defensive Rating
+NETRTG = Net Rating
+AST% = Assist Percentage
+AST/TO = Assist to Turnover Ratio
+AST RATIO = Assist Ratio
+OREB% = Offensive Rebounding Percentage
+DREB% = Defensive Rebounding Percentage
+REB% =Rebounding Percentage
+TOV% = Turnover Ratio
+EFG% = Effective Field Goal Percentage
+TS% = True Shooting Percentage
+PACE = Pace
+PIE = Player Impact Estimate
+POSS = Possessions
+
+I deleted the losses, Net Rating, Minutes Played Categorizes and took the wins divided by games played to make a new category called Win Percentage that was set as the output category.
+
+I was know left with 14 inputs of and 1 output. 
+
+Inputs:
+OFFRTG = Offensive Rating
+DEFRTG = Defensive Rating
+AST% = Assist Percentage
+AST/TO = Assist to Turnover Ratio
+AST RATIO = Assist Ratio
+OREB% = Offensive Rebounding Percentage
+DREB% = Defensive Rebounding Percentage
+REB% =Rebounding Percentage
+TOV% = Turnover Ratio
+EFG% = Effective Field Goal Percentage
+TS% = True Shooting Percentage
+PACE = Pace
+PIE = Player Impact Estimate
+POSS = Possessions
+
+Outputs:
+Win Percentage
+
+
+Next, I standarized each input metric based on its season to be used for the neural network. 
+To do this, I took each individual metric subtracted by the mean for that metric for that particular season and then divded by the standard deviation for that season.
+
+For the outputs, if a team's win percentage .5 or more they recieved a 1. If not, they recieved a 0.
+
+For example for one statistic Offensive Rating the standraization might look like this.
+Miami_Heat_2021_Offensive_Rating_Standarized = (Miami_Heat_2021_Offensive_Rating - Mean_Offensive_Rating_2021)/(Stardard_Deviation_2021_Offensive_Rating)
+
+
+Although it was much harder and took much longer, it was important to standarize according to individual season means and standard deviations because certain metrics averages changed over the course of the past 15 years.
+
+This can all be viewed in my excell sheet named NBA_RAW_DATA that is found in the Excell_Sheets folder (Which took way too a long time to make!).
+
+Next I split the final data into around 300 Train cases and 100 Test cases, created an intial Net, and ran the model.
+
+
+
+
+To create the initial neural network, I took the ranodmly generated neural netwoirk that we were provided for the WDBC test case and subtracted 16 of the input weights out.
+I concluded that instead of randomly generated my own values, that because these values were already sufficient, to use them again.
+This worked because I also was using 5 nodes in the Hidden Layer.
+
+When running the model, I found that 5 Hidden Nodes for Epochs = 500 and learning rate = 0.05 gave me the best results. 
+However, many combinations gave me similar very good results.
+
+For running the model all the text files needed are in the folder NBA_OVER_50_Percent_Wins
+In this folder I have provided the needed text files along with the results for the best combination of epochs and learning rate ->
+NBA_initial_net -> My initial Neural Net
+NBA_metrics -> Final Metric Results 
+NBA_RAW_DATA -> All the Post Processed Data
+NBA_returned_net -> The returned trained neural net
+NBA_test -> Test cases
+NBA_train -> Train cases
+Results_Image -> Image of my results for all trials of Epochs and Learning Rate
+
+I have also attahced the excell spreadhseet of all my trials of results with different combos of epochs and lr in the Excel_Sheets folder
+
+If there is anything else that I forgot to mention, I can easily explaion or send it over in an email.
+
+Thank You
+Evan Kluger
+
+ 
+
